@@ -148,21 +148,12 @@ prompt_status() {
   [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
 }
 
-# Dir: current working directory
-prompt_rbenv() {
-  ruby_version=$(rbenv local 2>&1)
-  if [[ $? -eq 0 ]]; then
-    prompt_segment magenta black $ruby_version
-  fi
-}
-
 ## Main prompt
 build_prompt() {
   RETVAL=$?
   prompt_status
   prompt_context
   prompt_dir
-  prompt_rbenv
   prompt_git
   prompt_hg
   prompt_end
