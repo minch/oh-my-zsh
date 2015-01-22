@@ -150,7 +150,8 @@ prompt_status() {
 
 # Dir: current working directory
 prompt_rbenv() {
-  ruby_version=$(rbenv local 2>&1)
+  # TODO:  Have to run at least one command for this to work..?
+  ruby_version=$(ruby -e 'print RUBY_VERSION')
   if [[ $? -eq 0 ]]; then
     prompt_segment magenta black $ruby_version
   fi
